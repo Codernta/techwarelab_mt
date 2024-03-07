@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "812872928988",
+    "project_id": "tlabmt",
+    "storage_bucket": "tlabmt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812872928988:android:7006a4922bdf24e9f3ee19",
+        "android_client_info": {
+          "package_name": "com.example.techware_lab_mt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe7wDDhTCzj4IC5R_5qaEfoPVflBg28U4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
