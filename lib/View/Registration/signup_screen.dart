@@ -1,6 +1,4 @@
 
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,11 +12,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final TextEditingController emailController = TextEditingController();
 
-  final TextEditingController passwordController = TextEditingController();
-
-  final TextEditingController reEnterPasswordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _reEnterPasswordController = TextEditingController();
 
   bool loading = false;
 
@@ -36,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               lottie(),
               SizedBox(height: 16.0),
               TextField(
-                controller: emailController,
+                controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   labelStyle: loginPageTitleStyle,
@@ -44,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: 16.0),
               TextField(
-                controller: passwordController,
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     labelText: 'Password',
@@ -53,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: 16.0),
               TextField(
-                controller: reEnterPasswordController,
+                controller: _reEnterPasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Confirm Password',
@@ -63,9 +60,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SizedBox(height: 24.0),
               ElevatedButton(
                 onPressed: () {
-                 if(reEnterPasswordController.text != passwordController.text){
+                 if(_reEnterPasswordController.text != _passwordController.text){
                    Get.snackbar('Error', 'Password mismatch!');
-                 }else if( emailController.text.isNotEmpty && passwordController.text.length >= 6 && passwordController.text == reEnterPasswordController.text){
+                 }else if( _emailController.text.isNotEmpty && _passwordController.text.length >= 6 && _passwordController.text == _reEnterPasswordController.text){
                    signUp().then((value) {
                      Get.snackbar('Success!!', "Account created successfully.");
                      Get.to(LoginForm());
@@ -110,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       loading = true;
     });
 try{
-  auth.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+  auth.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
 } on FirebaseAuthException catch (e){
   Get.snackbar('Info', e.code);
 }   setState(() {

@@ -1,5 +1,4 @@
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +39,6 @@ class _ItemsListState extends State<ItemsList> {
 
   @override
   void initState() {
-    // TODO: implement initState
     networkCheck();
     super.initState();
   }
@@ -67,7 +65,6 @@ class _ItemsListState extends State<ItemsList> {
     await InternetConnectionChecker().hasConnection;
     if (hasInternetConnection) {
       setState(() {
-        // getItemStream();
         searchController.addListener(_onSearchChanged);
       });
     } else {
@@ -144,24 +141,6 @@ class _ItemsListState extends State<ItemsList> {
                   ),
                 ),
               ),
-              Material(
-                borderRadius: BorderRadius.circular(20.0),
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(20.0),
-                  onTap: () {
-                    // QR code scanner icon functionality here
-                    // You can implement the QR code scanning logic
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.qr_code,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ),
               SizedBox(width: 8.0), //
               Material(
                 borderRadius: BorderRadius.circular(20.0),
@@ -197,7 +176,6 @@ class _ItemsListState extends State<ItemsList> {
       title: Text('Items List',style:loginPageTitleStyle,),
       toolbarHeight: 80,
       elevation: 0,
-
     );
   }
 

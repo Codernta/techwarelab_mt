@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
-import 'package:techware_lab_mt/View/HomeScreen/home_screen.dart';
 import 'package:techware_lab_mt/View/ListItems/items_list.dart';
 
 
@@ -22,19 +21,9 @@ class _AddNewItemScreenState extends State<AddNewItemScreen> {
   TextEditingController measurementController = TextEditingController();
   TextEditingController priceController = TextEditingController();
 
-  final List<String> bloodGroups = [
-    'A+',
-    'A-',
-    'B+',
-    'B-',
-    'O+',
-    'O-',
-    'AB+',
-    'AB-'
-  ];
-  String selectedBloodGroup = 'A+';
 
-  addDonor() {
+
+  addItem() {
     final data = {'name': nameController.text, 'measurement': measurementController.text, 'price': priceController.text};
     items.add(data).then((value) => Get.to(ItemsList()));
   }
@@ -137,7 +126,7 @@ class _AddNewItemScreenState extends State<AddNewItemScreen> {
           } else if(priceController.text.isEmpty){
             Get.snackbar('Info', 'Enter Price');
           }else{
-            addDonor();
+            addItem();
           }
           },
         child: Container(
@@ -147,7 +136,7 @@ class _AddNewItemScreenState extends State<AddNewItemScreen> {
                 color: Colors.blue.shade900),
             child: Center(
               child: Text(
-                'Submit',
+                'Add Item',
                 style:cardNameStyle,
               ),
             )),

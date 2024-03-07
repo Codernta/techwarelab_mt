@@ -1,7 +1,6 @@
 
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -24,55 +23,59 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           lottie(),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-                labelStyle: loginPageTitleStyle,
-              ),
+      body: loginBody()
+    );
+  }
+
+  loginBody() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          lottie(),
+          TextField(
+            controller: emailController,
+            decoration: InputDecoration(
+              labelText: 'Email',
+              labelStyle: loginPageTitleStyle,
             ),
-            SizedBox(height: 16.0),
-            TextField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
+          ),
+          SizedBox(height: 16.0),
+          TextField(
+            controller: passwordController,
+            obscureText: true,
+            decoration: InputDecoration(
                 labelText: 'Password',
                 labelStyle: loginPageTitleStyle
+            ),
+          ),
+          SizedBox(height: 24.0),
+          ElevatedButton(
+            onPressed: () {
+              if(emailController.text.isNotEmpty && passwordController.text.length >= 6){
+                login();
+              } else if (emailController.text.isEmpty){
+                Get.snackbar('Error', 'Enter your email');
+              }else {
+                Get.snackbar('Error', 'Password must be greater than 5 letters');
+              }
+            },
+            style:ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue.shade900,
+              padding: EdgeInsets.symmetric(horizontal: 100.0,vertical: 20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12), // <-- Radius
               ),
             ),
-            SizedBox(height: 24.0),
-            ElevatedButton(
-              onPressed: () {
-                if(emailController.text.isNotEmpty && passwordController.text.length >= 6){
-                  login();
-                } else if (emailController.text.isEmpty){
-                  Get.snackbar('Error', 'Enter your email');
-                }else {
-                  Get.snackbar('Error', 'Password must be greater than 5 letters');
-                }
-              },
-              style:ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue.shade900,
-                padding: EdgeInsets.symmetric(horizontal: 100.0,vertical: 20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12), // <-- Radius
-                ),
-              ),
-              child: loading ? CircularProgressIndicator(color: Colors.white,): Text('Login',style: cardNameStyle,),
-            ),
-            SizedBox(height: 16.0),
-            TextButton(
-              onPressed: () => Get.to(SignUpScreen()),
-              child: Text('Not logged in? Sign up',style: notSignedInStyle,),
-            ),
-          ],
-        ),
+            child: loading ? CircularProgressIndicator(color: Colors.white,): Text('Login',style: cardNameStyle,),
+          ),
+          SizedBox(height: 16.0),
+          TextButton(
+            onPressed: () => Get.to(SignUpScreen()),
+            child: Text('Not logged in? Sign up',style: notSignedInStyle,),
+          ),
+        ],
       ),
     );
   }
@@ -82,7 +85,6 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   Future<void> login ()async {
-
     setState(() {
       loading = true;
     });
@@ -96,4 +98,6 @@ class _LoginFormState extends State<LoginForm> {
       loading = false;
     });
   }
+
+
 }
