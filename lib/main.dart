@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:techware_lab_mt/View/HomeScreen/home_screen.dart';
+import 'package:techware_lab_mt/View/PinScreen/check_pin_screen.dart';
 import 'package:techware_lab_mt/View/Registration/login_screen.dart';
 
 void main() async {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, AsyncSnapshot<User?> snapshot){
           if(snapshot.hasData && snapshot.data != null){
-            return const Homescreen();
+            return const CheckPinScreen();
           }else if(snapshot.connectionState == ConnectionState.waiting){
             return Center(
               child: CircleAvatar(

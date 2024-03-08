@@ -90,9 +90,9 @@ class _LoginFormState extends State<LoginForm> {
     });
     try{
       final auth = FirebaseAuth.instance;
-    auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text).then((value) => Get.to(()=>Homescreen()));
-    } on FirebaseAuthException catch (e){
-      Get.snackbar('Info', e.message.toString());
+    await auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text).then((value) => Get.to(()=>Homescreen()));
+    }  catch (e){
+      Get.snackbar('Info', e.toString());
     }
     setState(() {
       loading = false;

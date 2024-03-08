@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:lottie/lottie.dart';
 import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
 import 'package:techware_lab_mt/View/AddNewItem/add_item_screen.dart';
 import 'package:techware_lab_mt/View/ListItems/items_list.dart';
@@ -76,6 +77,7 @@ class _HomescreenState extends State<Homescreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               hiText(),
+              lottie(),
               widthBox(),
               ButtonCard(iconName: Icons.add,cardName: 'Add Item',onPress: ()=> Get.to(()=> AddNewItemScreen()),),
               widthBox(),
@@ -90,14 +92,14 @@ class _HomescreenState extends State<Homescreen> {
 
 widthBox(){
     return SizedBox(
-      height: 20,
+      height: 30,
     );
 }
 
   hiText() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 80.0),
-      child: Text('Hi,\nWelcome back.',style: primaryStyle,),
+      padding: const EdgeInsets.only(top: 30,bottom: 20),
+      child: Text('Hi,',style: primaryStyle,),
     );
   }
 
@@ -108,6 +110,10 @@ widthBox(){
         child: Text(FirebaseAuth.instance.currentUser!.email.toString(),style: loginPageTitleStyle,),
       ),
     );
+  }
+
+  lottie() {
+    return Lottie.asset('assets/lotties/welcome_back.json');
   }
 }
 

@@ -1,9 +1,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
+import 'package:techware_lab_mt/View/PinScreen/lock_pin_screen.dart';
 import 'package:techware_lab_mt/View/Registration/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -63,10 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                  if(_reEnterPasswordController.text != _passwordController.text){
                    Get.snackbar('Error', 'Password mismatch!');
                  }else if( _emailController.text.isNotEmpty && _passwordController.text.length >= 6 && _passwordController.text == _reEnterPasswordController.text){
-                   signUp().then((value) {
-                     Get.snackbar('Success!!', "Account created successfully.");
-                     Get.to(LoginForm());
-                   });
+                   signUp();
                  }
                 },
                 style:ElevatedButton.styleFrom(
@@ -102,15 +101,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Future<void> signUp() async{
-    final auth = FirebaseAuth.instance;
     setState((){
       loading = true;
     });
-try{
-  auth.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
-} on FirebaseAuthException catch (e){
-  Get.snackbar('Info', e.code);
-}   setState(() {
+    try {
+      final auth = FirebaseAuth.instance;
+      await auth.createUserWithEmailAndPassword(
+          email: _emailController.text, password: _passwordController.text).then((value) => Get.to(()=>AddPinScreen()));
+    }catch(e) {
+        Get.snackbar('Info', e.toString());
+    }
+  setState(() {
       loading = false;
     });
   }
