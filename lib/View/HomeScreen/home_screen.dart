@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
-import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
+import 'package:techware_lab_mt/Utils/utils.dart';
 import 'package:techware_lab_mt/View/AddNewItem/add_item_screen.dart';
 import 'package:techware_lab_mt/View/ListItems/items_list.dart';
 import 'package:techware_lab_mt/View/Registration/login_screen.dart';

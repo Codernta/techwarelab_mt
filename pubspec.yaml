@@ -31,15 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
   get:
-  cached_network_image:
   internet_connection_checker:
-  flutter_svg:
-  dio:
-  loading_animation_widget:
   iconsax:
-  url_launcher:
-  path_provider:
-  permission_handler:
   flutter_launcher_icons:
   lottie:
   firebase_core:

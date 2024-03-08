@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
+import 'package:techware_lab_mt/Utils/utils.dart';
 
 class ProductDetails extends StatelessWidget {
   @override

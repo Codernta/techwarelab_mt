@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
+import 'package:techware_lab_mt/Utils/utils.dart';
 import 'package:techware_lab_mt/View/HomeScreen/home_screen.dart';
 import 'package:techware_lab_mt/View/Registration/signup_screen.dart';
 

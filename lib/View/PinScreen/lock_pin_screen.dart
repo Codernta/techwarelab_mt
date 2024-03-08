@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
-import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
+import 'package:techware_lab_mt/Utils/utils.dart';
 import 'package:techware_lab_mt/View/HomeScreen/home_screen.dart';
 
 class AddPinScreen extends StatefulWidget {

@@ -3,9 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
+import 'package:techware_lab_mt/Utils/utils.dart';
 import 'package:techware_lab_mt/View/HomeScreen/home_screen.dart';
 import 'package:techware_lab_mt/View/ItemDetailScreen/item_detail_screen.dart';
 
@@ -305,10 +304,12 @@ class _ItemsListState extends State<ItemsList> {
       ],
     );
   }
+
   loader() {
-    return Center(
-      child: LoadingAnimationWidget.fourRotatingDots(
-          color: Colors.blue.shade900, size: 50),
+    return CircleAvatar(
+      radius: 20,
+      backgroundColor: Colors.blue.shade900,
+      child: CircularProgressIndicator(color: Colors.white,),
     );
   }
 }

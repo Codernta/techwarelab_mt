@@ -1,12 +1,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:techware_lab_mt/Utils/Utilities/utils.dart';
+import 'package:techware_lab_mt/Utils/utils.dart';
 import 'package:techware_lab_mt/View/PinScreen/lock_pin_screen.dart';
-import 'package:techware_lab_mt/View/Registration/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
